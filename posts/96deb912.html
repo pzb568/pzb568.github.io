@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="pJVVxWd0D9DTolINrCMSlJtXXd5lLLqf3AKuLXYRXg0">
+  <meta name="msvalidate.01" content="C4046DE79F685854C805F9953FC827CD">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="http://googlefonts.cn/css2?family=EB+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pzb568.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism-shades-of-purple","dark":"prism-shades-of-purple"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="aria2简介    Aria2 是一个用于 Linux、Windows 和 Mac OSX 的轻量级、多协议和多源的命令行下载管理器&#x2F;实用程序。它支持 HTTP&#x2F;HTTPS、FTP、SFTP、BitTorrent 和 Metalink。aria2 可以通过内置的 JSON-RPC 和 XML-RPC 接口操作。它支持多线程，可以使用多个源或协议下载文件，确实可以加速并尽可能多的完成下载。它非常轻">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓手机利用termux搭建aria2下载服务">
+<meta property="og:url" content="https://pzb568.github.io/posts/96deb912.html">
+<meta property="og:site_name" content="风轻云淡">
+<meta property="og:description" content="aria2简介    Aria2 是一个用于 Linux、Windows 和 Mac OSX 的轻量级、多协议和多源的命令行下载管理器&#x2F;实用程序。它支持 HTTP&#x2F;HTTPS、FTP、SFTP、BitTorrent 和 Metalink。aria2 可以通过内置的 JSON-RPC 和 XML-RPC 接口操作。它支持多线程，可以使用多个源或协议下载文件，确实可以加速并尽可能多的完成下载。它非常轻">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pzb568.github.io/posts/01.jpg">
+<meta property="article:published_time" content="2018-11-10T04:28:33.000Z">
+<meta property="article:modified_time" content="2025-07-12T03:22:33.553Z">
+<meta property="article:author" content="彭宅波">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="termux">
+<meta property="article:tag" content="下载">
+<meta property="article:tag" content="aria2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pzb568.github.io/posts/01.jpg">
+
+
+<link rel="canonical" href="https://pzb568.github.io/posts/96deb912.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pzb568.github.io/posts/96deb912.html","path":"posts/96deb912.html","title":"安卓手机利用termux搭建aria2下载服务"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>安卓手机利用termux搭建aria2下载服务 | 风轻云淡</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/6.1.3/pangu.umd.js" integrity="sha256-erngBMP3zzoIM6eqQ8dmrReh2vqCRgWmORroIfVoDlE=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.1/pdfobject.min.js","integrity":"sha256-jI72I8ZLVflVOisZIOaLvRew3tyvzeu6aZXFm7P7dEo="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js" defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":false,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://pzb568.github.io/posts/96deb912.html"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+<script async src="/lib/fireworks.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style><!--谷歌广告-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-1860534692691231", enable_page_level_ads: true }); </script>
+
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "72d0b78464234dc6a2ccef9bde4bb09e"}'></script><!-- End Cloudflare Web Analytics -->
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">风轻云淡</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">把每一天当生命的最后一秒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">103</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">38</span></a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="fa fa-comment fa-fw"></i>留言</a></li><li class="menu-item menu-item-photos"><a href="/photos" rel="section"><i class="fa fa-camera-retro fa-fw"></i>照片</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fas fa-heart fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="//lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#aria2%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">aria2简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#aria2-%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">aria2 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.1.1.</span> <span class="nav-text">命令下载</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="彭宅波"
+      src="https://cdn.jsdelivr.net/gh/pzb568/blog_filescdn@1.1/logo.gif">
+  <p class="site-author-name" itemprop="name">彭宅波</p>
+  <div class="site-description" itemprop="description">一个专注于技术、生活和思考的个人博客。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/pzb568" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;pzb568" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:pengzb886@gmail.com" title="E-Mail → mailto:pengzb886@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zb_peng32777" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zb_peng32777" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/@zbpeng2960/" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;@zbpeng2960&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+<div id="days"></div>
+</script>
+<script language="javascript">
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("08/07/2017 20:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pzb568.github.io/posts/96deb912.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/pzb568/blog_filescdn@1.1/logo.gif">
+      <meta itemprop="name" content="彭宅波">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风轻云淡">
+      <meta itemprop="description" content="一个专注于技术、生活和思考的个人博客。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="安卓手机利用termux搭建aria2下载服务 | 风轻云淡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安卓手机利用termux搭建aria2下载服务<a href="https://github.com/pzb568/hexoblog/edit/master/source/_posts/%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E5%88%A9%E7%94%A8termux%E6%90%AD%E5%BB%BAaria2%E4%B8%8B%E8%BD%BD%E6%9C%8D%E5%8A%A1.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-11-10 12:28:33" itemprop="dateCreated datePublished" datetime="2018-11-10T12:28:33+08:00">2018-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-12 11:22:33" itemprop="dateModified" datetime="2025-07-12T11:22:33+08:00">2025-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">应用软件</span></a>
+        </span>
+    </span>
+
+  
+
+<script src="https://myhkw.cn/player/js/player.js" id="myhk" key="159507093590" m="1"></script>
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="aria2简介">aria2简介</h1>
+<p>   Aria2 是一个用于 Linux、Windows 和 Mac OSX
+的轻量级、多协议和多源的命令行下载管理器/实用程序。它支持
+HTTP/HTTPS、FTP、SFTP、BitTorrent 和 Metalink。aria2 可以通过内置的
+JSON-RPC 和 XML-RPC
+接口操作。它支持多线程，可以使用多个源或协议下载文件，确实可以加速并尽可能多的完成下载。它非常轻量级，不需要太多的内存和
+CPU。我们可以使用它作为 BitTorrent 客户端，因为它有所有你想要的
+BitTorrent 客户端的功能。    我们可以很容易的在所有的 Linux 发行版上安装
+aria2 命令行下载器，例如 Debian、 Ubuntu、 Mint、 RHEL、 CentOS、
+Fedora、 suse、 openSUSE、 Arch Linux、 Manjaro、 Mageia
+等等……只需要输入下面的命令安装即可。对于 CentOS、 RHEL
+系统，我们需要开启 uget 或者 RPMForge 库的支持。</p>
+<h2 id="aria2-安装">aria2 安装</h2>
+<ol type="1">
+<li>Debian、 Ubuntu 和 Mint <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install aria2</span><br></pre></td></tr></table></figure></li>
+<li>CentOS、 RHEL、 Fedora 21 和更早些的操作系统] <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install aria2</span><br></pre></td></tr></table></figure></li>
+<li>Fedora 22 和 之后的系统 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install aria2</span><br></pre></td></tr></table></figure></li>
+<li>suse 和 openSUSE <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zypper install wget</span><br></pre></td></tr></table></figure></li>
+<li>Mageia <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">urpmi aria2</span><br></pre></td></tr></table></figure></li>
+<li>Arch Linux <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S aria2</span><br></pre></td></tr></table></figure></li>
+<li>安卓系统termux <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install aria2</span><br></pre></td></tr></table></figure> ## 图形化aria2下载 ###
+Termux在本地搭建Aria2+AriaNg</li>
+<li>下载需要的Packages <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg in wget unzip aria2 tmux</span><br></pre></td></tr></table></figure></li>
+<li>下载Caddy 这样因为Caddy配置起来比较容易,所以用Caddy当HTTP Server.
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd~</span><br><span class="line">wget -qO- https://getcaddy.com | bash -s personal</span><br></pre></td></tr></table></figure></li>
+<li>下载AriaNg并解压 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/mayswind/AriaNg-DailyBuild/archive/master.zip</span><br><span class="line">unzip master.zip</span><br><span class="line">mv AriaNg-DailyBuild-master AriaNg</span><br><span class="line">rm master.zip</span><br></pre></td></tr></table></figure></li>
+<li>配置Caddy <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd~</span><br><span class="line">vim Caddyfile </span><br></pre></td></tr></table></figure> 在vim输入（:i编辑,:wq退出并保存）
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:8080 &#123;</span><br><span class="line">root /data/data/com.termux/files/home/AriaNg</span><br><span class="line">gzip</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>启动 输入tmux 在新建的窗口中输入 启动Aria2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c --enable-rpc --rpc-listen-all=true --rpc-allow-origin-all -c</span><br></pre></td></tr></table></figure>
+按Ctrl+b之后再按d返回之前的窗口，将此窗口放在后台执行（输入tmux
+attach能够重新进入,按Ctrl+b之后再按&amp;关闭当前tmux窗口）
+返回后启动AriaNg,输入 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd~</span><br><span class="line">caddy</span><br></pre></td></tr></table></figure> 6.访问 打开浏览器地址栏输入
+127.0.0.1:8080 <escape><span id="more"></span></escape> <img data-src="01.jpg" /></li>
+<li>下载BT种文文件需要设置BT服务器
+https://github.com/ngosang/trackerslist/blob/master/README.md
+在ariaNg设置中找到BT设置BT服务器填入以链接中的内容并附上BT服务器
+https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best_ip.txt
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">udp://62.138.0.158:6969/announce</span><br><span class="line"></span><br><span class="line">udp://188.241.58.209:6969/announce</span><br><span class="line"></span><br><span class="line">udp://62.210.79.110:1337/announce</span><br><span class="line"></span><br><span class="line">udp://185.225.17.100:1337/announce</span><br><span class="line"></span><br><span class="line">udp://151.80.120.112:2710/announce</span><br><span class="line"></span><br><span class="line">udp://208.83.20.20:6969/announce</span><br><span class="line"></span><br><span class="line">udp://184.105.151.164:6969/announce</span><br><span class="line"></span><br><span class="line">udp://176.113.68.67:8080/announce</span><br><span class="line"></span><br><span class="line">udp://51.15.40.114:80/announce</span><br><span class="line"></span><br><span class="line">http://176.113.71.19:6961/announce</span><br><span class="line"></span><br><span class="line">udp://176.113.68.66:6961/announce</span><br><span class="line"></span><br><span class="line">udp://91.216.110.52:451/announce</span><br><span class="line"></span><br><span class="line">udp://5.206.28.90:6969/announce</span><br><span class="line"></span><br><span class="line">udp://188.246.227.212:80/announce</span><br><span class="line"></span><br><span class="line">udp://5.2.79.219:1337/announce</span><br><span class="line"></span><br><span class="line">udp://5.2.79.22:6969/announce</span><br><span class="line"></span><br><span class="line">udp://95.211.168.204:2710/announce</span><br><span class="line"></span><br><span class="line">http://51.68.122.172:80/announce</span><br><span class="line"></span><br><span class="line">udp://210.244.71.25:6969/announce</span><br><span class="line"></span><br><span class="line">udp://51.38.184.185:6969/announce</span><br></pre></td></tr></table></figure> ### 安装网页版webui-aria2</li>
+<li>下载网页版webui-aria2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ziahamza/webui-aria2.git</span><br></pre></td></tr></table></figure></li>
+<li>打开运行 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd webui-aria2</span><br></pre></td></tr></table></figure></li>
+<li>启动 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node node-server.js</span><br></pre></td></tr></table></figure></li>
+<li>输入提示的网址打开</li>
+</ol>
+<p>当然以上图形化对于普通人是非常有好的，如果不想麻烦就直接使用命令下载更加方便。</p>
+<h3 id="命令下载">命令下载</h3>
+<ul>
+<li>命令下载 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c 链接</span><br></pre></td></tr></table></figure></li>
+<li>断点续传下载 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -c 之前下载文件的链接</span><br></pre></td></tr></table></figure></li>
+<li>下载并修改文件名 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -o 链接 文件名</span><br></pre></td></tr></table></figure></li>
+<li>下载多个文件 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -Z 链接1 链接2</span><br></pre></td></tr></table></figure></li>
+<li>设置线程 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2 -x 5 链接</span><br></pre></td></tr></table></figure> 分断下载 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2 -s 16 url</span><br></pre></td></tr></table></figure> 多线程分断下载
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2 -x16 -s 16 url</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://cdn.jsdelivr.net/gh/pzb568/blog_filescdn@1.1/wx.png" alt="彭宅波 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://cdn.jsdelivr.net/gh/pzb568/blog_filescdn@1.1/zfb.png" alt="彭宅波 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>彭宅波
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pzb568.github.io/posts/96deb912.html" title="安卓手机利用termux搭建aria2下载服务">https://pzb568.github.io/posts/96deb912.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/zb_peng32777">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/pzb1688">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/termux/" rel="tag"><i class="fa fa-tag"></i> termux</a>
+              <a href="/tags/%E4%B8%8B%E8%BD%BD/" rel="tag"><i class="fa fa-tag"></i> 下载</a>
+              <a href="/tags/aria2/" rel="tag"><i class="fa fa-tag"></i> aria2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/3be63484.html" rel="prev" title="v2ray的使用方法与节点分享">
+                  <i class="fa fa-angle-left"></i> v2ray的使用方法与节点分享
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/d8fa7a69.html" rel="next" title="termux安装使用you-get下载视频">
+                  termux安装使用you-get下载视频 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC80MTg0OS8xODM5NQ"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">彭宅波</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">52k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">48 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "box";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+  </script><script src="/js/third-party/comments/livere.js" defer></script>
+
+</body>
+</html>

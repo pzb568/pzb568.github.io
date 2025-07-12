@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="pJVVxWd0D9DTolINrCMSlJtXXd5lLLqf3AKuLXYRXg0">
+  <meta name="msvalidate.01" content="C4046DE79F685854C805F9953FC827CD">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="http://googlefonts.cn/css2?family=EB+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pzb568.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism-shades-of-purple","dark":"prism-shades-of-purple"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="v2ray相比ss系列提高了安全性，减少被防火墙封锁的风险，同时可以使用ss的节点(但是不支持SSR节点)。 想了解详细的安装说明信息可以在去官方网站或者去github v2ray开源项目的教程说明。 软件下载 安卓系统  v2rayNG（推荐使用）   下载地址 https:&#x2F;&#x2F;github.com&#x2F;2dust&#x2F;v2rayNG&#x2F;releases 导入下面节点     Surfboard （">
+<meta property="og:type" content="article">
+<meta property="og:title" content="v2ray的使用方法与节点分享">
+<meta property="og:url" content="https://pzb568.github.io/posts/3be63484.html">
+<meta property="og:site_name" content="风轻云淡">
+<meta property="og:description" content="v2ray相比ss系列提高了安全性，减少被防火墙封锁的风险，同时可以使用ss的节点(但是不支持SSR节点)。 想了解详细的安装说明信息可以在去官方网站或者去github v2ray开源项目的教程说明。 软件下载 安卓系统  v2rayNG（推荐使用）   下载地址 https:&#x2F;&#x2F;github.com&#x2F;2dust&#x2F;v2rayNG&#x2F;releases 导入下面节点     Surfboard （">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2019/08/0027ef05f989a975.jpg">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2019/08/0027ef05f989a975.jpg">
+<meta property="og:image" content="https://goindex.pzb.workers.dev/0:/img/IMG_0381.PNG">
+<meta property="article:published_time" content="2018-11-09T06:13:28.000Z">
+<meta property="article:modified_time" content="2025-07-12T03:22:33.532Z">
+<meta property="article:author" content="彭宅波">
+<meta property="article:tag" content="谷歌">
+<meta property="article:tag" content="翻墙">
+<meta property="article:tag" content="节点分享">
+<meta property="article:tag" content="v2rayNG">
+<meta property="article:tag" content="Surfboard">
+<meta property="article:tag" content="Pharos">
+<meta property="article:tag" content="v2rayN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ftp.bmp.ovh/imgs/2019/08/0027ef05f989a975.jpg">
+
+
+<link rel="canonical" href="https://pzb568.github.io/posts/3be63484.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pzb568.github.io/posts/3be63484.html","path":"posts/3be63484.html","title":"v2ray的使用方法与节点分享"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>v2ray的使用方法与节点分享 | 风轻云淡</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/6.1.3/pangu.umd.js" integrity="sha256-erngBMP3zzoIM6eqQ8dmrReh2vqCRgWmORroIfVoDlE=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.1/pdfobject.min.js","integrity":"sha256-jI72I8ZLVflVOisZIOaLvRew3tyvzeu6aZXFm7P7dEo="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js" defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":false,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://pzb568.github.io/posts/3be63484.html"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+<script async src="/lib/fireworks.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style><!--谷歌广告-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-1860534692691231", enable_page_level_ads: true }); </script>
+
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "72d0b78464234dc6a2ccef9bde4bb09e"}'></script><!-- End Cloudflare Web Analytics -->
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">风轻云淡</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">把每一天当生命的最后一秒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">103</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">38</span></a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="fa fa-comment fa-fw"></i>留言</a></li><li class="menu-item menu-item-photos"><a href="/photos" rel="section"><i class="fa fa-camera-retro fa-fw"></i>照片</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fas fa-heart fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="//lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">软件下载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">安卓系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#win%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">WIN系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.3.</span> <span class="nav-text">Linux系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8B%B9%E6%9E%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.</span> <span class="nav-text">苹果系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ios"><span class="nav-number">1.4.1.</span> <span class="nav-text">IOS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#shadowrocket"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">shadowrocket</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pharos"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">Pharos</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mac"><span class="nav-number">1.4.2.</span> <span class="nav-text">mac</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A2%E9%98%85%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text">订阅地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%88%86%E4%BA%AB"><span class="nav-number">3.</span> <span class="nav-text">节点分享</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="彭宅波"
+      src="https://cdn.jsdelivr.net/gh/pzb568/blog_filescdn@1.1/logo.gif">
+  <p class="site-author-name" itemprop="name">彭宅波</p>
+  <div class="site-description" itemprop="description">一个专注于技术、生活和思考的个人博客。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/pzb568" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;pzb568" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:pengzb886@gmail.com" title="E-Mail → mailto:pengzb886@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zb_peng32777" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zb_peng32777" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/@zbpeng2960/" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;@zbpeng2960&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+<div id="days"></div>
+</script>
+<script language="javascript">
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("08/07/2017 20:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pzb568.github.io/posts/3be63484.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/pzb568/blog_filescdn@1.1/logo.gif">
+      <meta itemprop="name" content="彭宅波">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风轻云淡">
+      <meta itemprop="description" content="一个专注于技术、生活和思考的个人博客。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="v2ray的使用方法与节点分享 | 风轻云淡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          v2ray的使用方法与节点分享<a href="https://github.com/pzb568/hexoblog/edit/master/source/_posts/v2ray%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E4%B8%8E%E8%8A%82%E7%82%B9%E5%88%86%E4%BA%AB.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-11-09 14:13:28" itemprop="dateCreated datePublished" datetime="2018-11-09T14:13:28+08:00">2018-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-12 11:22:33" itemprop="dateModified" datetime="2025-07-12T11:22:33+08:00">2025-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">网络应用</span></a>
+        </span>
+    </span>
+
+  
+
+<script src="https://myhkw.cn/player/js/player.js" id="myhk" key="159507093590" m="1"></script>
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>  
+v2ray相比ss系列提高了安全性，减少被<strong>防火墙</strong>封锁的风险，同时可以使用ss的节点(但是不支持SSR节点)。
+想了解详细的安装说明信息可以在去<a
+href="www.v2ray.com">官方网站</a>或者去github <a
+target="_blank" rel="noopener" href="https://github.com/v2ray/v2ray-core">v2ray</a>开源项目的教程说明。</p>
+<h2 id="软件下载">软件下载</h2>
+<h3 id="安卓系统">安卓系统</h3>
+<ol type="1">
+<li>v2rayNG（推荐使用）</li>
+</ol>
+<ul>
+<li>下载地址 https://github.com/2dust/v2rayNG/releases</li>
+<li>导入下面节点 <img data-src="https://ftp.bmp.ovh/imgs/2019/08/0027ef05f989a975.jpg" /> <img data-src="https://ftp.bmp.ovh/imgs/2019/08/0027ef05f989a975.jpg" /></li>
+</ul>
+<ol start="2" type="1">
+<li><p>Surfboard （强烈推荐 ）
+&gt;推荐使用速度非常快，可以扫描二维码和配合v2rayNG节点导出剪切板然后到Surfboard点击加号选择使用连接下载或添加订阅
+保存即可；youtube上有人评测Surfboard是最快的，想了解详细情况点击下面网址<a
+target="_blank" rel="noopener" href="https://jsproxy.pzb.workers.dev/-----https://m.youtube.com/watch?v=oG8y-6s6Aek"
+class="uri">https://jsproxy.pzb.workers.dev/-----https://m.youtube.com/watch?v=oG8y-6s6Aek</a></p></li>
+<li><p>Pharos Pro (支持最全面) &gt;<a
+target="_blank" rel="noopener" href="https://pi-pi.gitbook.io/pharos-pro/">Pharos Pro</a>
+支持Android和iOS，支持 Trojan、V2ray-Core、SS、SS+Simple
+obfs、SSR、socks5、Https协议。目前还在测试中。详细情况可以点击前面链接访问开发者的文档。
+下面附上下载地址<a target="_blank" rel="noopener" href="https://tg.pzb.workers.dev/">Pharos
+Pro</a></p></li>
+<li><p>Clash Clash 是一个使用 Go
+语言编写、基于规则的跨平台代理核心程序。Clash目前有Windows、MacOS、Android等多个平台的GUI程序，支持SS/V2ray/Trojan多种协议，功能强大。
+&gt; 支持把所有的节点全部托管 ，然后按照速度自动选择连接</p></li>
+<li><p>下载 官网下载 ：<a
+target="_blank" rel="noopener" href="https://github.com/Kr328/ClashForAndroid/releases"
+class="uri">https://github.com/Kr328/ClashForAndroid/releases</a></p></li>
+<li><p>制作托管链接 https://bianyuan.xyz/</p></li>
+<li><p>复制下面的节点</p></li>
+<li><p>粘贴到上面网页</p></li>
+<li><p>点击生成链接并复制</p></li>
+<li><p>粘贴到clash配置新配置URL导入</p></li>
+<li><p>点击启动开始使用</p></li>
+</ol>
+<h3 id="win系统">WIN系统</h3>
+<ol type="1">
+<li>下载地址</li>
+</ol>
+<p>https://github.com/2dust/v2rayN/releases/download/5.37/v2rayN-Core.zip</p>
+<ol start="2" type="1">
+<li>解压</li>
+</ol>
+<p><img src = 'https://i.bmp.ovh/imgs/2019/02/59c05c1db8f6584b.jpg' /></p>
+<ol start="3" type="1">
+<li>创建快捷方式双击启动 v2rayN 。</li>
+</ol>
+<h3 id="linux系统">Linux系统</h3>
+<p>使用Linux系统的都是大神级的，安装和使用都不在话下，这里就不出教程了。</p>
+<blockquote>
+<p>推荐使用Qv2ray详细说明请访问<a
+target="_blank" rel="noopener" href="https://github.com/Qv2ray/Qv2ray">github</a>,配置教程请浏览官方教程网站<a
+target="_blank" rel="noopener" href="https://qv2ray.net/lang/zh/">qv2ray</a></p>
+</blockquote>
+<h3 id="苹果系统">苹果系统</h3>
+<h4 id="ios">IOS</h4>
+<blockquote>
+<p>由于苹果系统相对封闭，不明国情原因，国区几乎所有软件全部下架；但是还是可以通过切换其他区域帐号下载和购买。</p>
+</blockquote>
+<h5 id="shadowrocket">shadowrocket</h5>
+<p><a target="_blank" rel="noopener" href="https://apps.apple.com/us/app/shadowrocket/id932747118">App
+Store</a></p>
+<p>以下是软件图片 <img data-src="https://goindex.pzb.workers.dev/0:/img/IMG_0381.PNG" /></p>
+<h5 id="pharos">Pharos</h5>
+<p>下载地址<a
+target="_blank" rel="noopener" href="https://apps.apple.com/sg/app/pharos-pro/id1456610173">App
+Store</a></p>
+<h4 id="mac">mac</h4>
+<p>V2RayX</p>
+<blockquote>
+<p>下载地址 <a
+target="_blank" rel="noopener" href="https://github.com/Cenmrev/V2RayX/releases/download/v1.5.1/V2RayX.app.zip"
+class="uri">https://github.com/Cenmrev/V2RayX/releases/download/v1.5.1/V2RayX.app.zip</a></p>
+</blockquote>
+<p><escape><span id="more"></span></escape></p>
+<h2 id="订阅地址">订阅地址</h2>
+<p>以下是我收集的订阅，分享给大家</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">https://v2.itlao5.com/v2</span><br><span class="line">https://jiang.netlify.com/</span><br><span class="line">https://qiaomenzhuanfx.netlify.com/ </span><br><span class="line">https://raw.fastgit.org/freefq/free/master/v2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="节点分享">节点分享</h2>
+<p>以下节点我会不定期更新，请注意更新日期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">vmess://eyJhZGQiOiI2Ni4xODEuNDUuMTY5IiwiYWlkIjoiMiIsImhvc3QiOiIiLCJpZCI6IjQ3NWU3MTEzLWEzNGMtNDU1YS1lMmE0LTFlYzhlYzkzMDEwOCIsIm5ldCI6IndzIiwicGF0aCI6Ii8iLCJwb3J0IjoiNTIzMzMiLCJwcyI6Il8wMSB8NDMuMjVNYiIsInRscyI6IiIsInR5cGUiOiJub25lIiwidiI6IjIifQ==</span><br><span class="line">vmess://eyJhZGQiOiIxMDcuMTc1LjIxLjE1OCIsImFpZCI6IjIiLCJob3N0IjoiIiwiaWQiOiI0NzVlNzExMy1hMzRjLTQ1NWEtZTJhNC0xZWM4ZWM5MzAxMDgiLCJuZXQiOiJ3cyIsInBhdGgiOiIvIiwicG9ydCI6IjUyMzMzIiwicHMiOiJfMDIgfDE2MS4wMU1iIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9</span><br><span class="line">vmess://eyJhZGQiOiI3NS4yLjMxLjE2NiIsImFpZCI6IjY0IiwiaG9zdCI6IiIsImlkIjoiNDEwYTQzNDEtMTg3Mi00MTA5LWVjYmEtZGE4MzAyZGMzZDcwIiwibmV0Ijoid3MiLCJwYXRoIjoiL3YycmF5IiwicG9ydCI6IjQ4NjA3IiwicHMiOiJfMDMgfDE5Ljg2TWIiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=</span><br><span class="line">vmess://eyJhZGQiOiIxMDMuMjE5LjE1NC4xNzAiLCJhaWQiOiIyIiwiaG9zdCI6IiIsImlkIjoiNDc1ZTcxMTMtYTM0Yy00NTVhLWUyYTQtMWVjOGVjOTMwMTA4IiwibmV0Ijoid3MiLCJwYXRoIjoiLyIsInBvcnQiOiI1MjMzMyIsInBzIjoiXzA1IHwzMC43OU1iIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9</span><br><span class="line">vmess://eyJhZGQiOiIxMDcuMTc1LjAuMjAxIiwiYWlkIjoiMiIsImhvc3QiOiIiLCJpZCI6IjQ3NWU3MTEzLWEzNGMtNDU1YS1lMmE0LTFlYzhlYzkzMDEwOCIsIm5ldCI6IndzIiwicGF0aCI6Ii8iLCJwb3J0IjoiNTIzMzMiLCJwcyI6Il8wNiB8NzMuNDBNYiIsInRscyI6IiIsInR5cGUiOiJub25lIiwidiI6IjIifQ==</span><br><span class="line">vmess://eyJhZGQiOiJoa2FnYS45OWlwbGMueHl6IiwiYWlkIjoiMSIsImhvc3QiOiIiLCJpZCI6Ijc2MmY1MGY3LTIyNjQtMzUxMC05ZmJhLTZkM2UzOWFjNjIzZSIsIm5ldCI6IndzIiwicGF0aCI6Ii92MiIsInBvcnQiOiIyMDAwMCIsInBzIjoiXzA4IHwgMi44Nk1iIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9</span><br><span class="line">vmess://eyJhZGQiOiIxNTQuODQuMS4xNDAiLCJhaWQiOiI2NCIsImhvc3QiOiIiLCJpZCI6IjJhNzM0OWQ2LTk5NGEtNDM0Yi05NTg5LWMwMDIwNjg1ZTUyOCIsIm5ldCI6InRjcCIsInBhdGgiOiIvIiwicG9ydCI6IjU0NjcxIiwicHMiOiJOTC3kuozniLflhY3otLnnv7vlopnnvZEgaHR0cHM6Ly81NDE0Lm1sIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9</span><br><span class="line">vmess://eyJhZGQiOiI4LjIxMC4zLjEzMyIsImFpZCI6IjIzMyIsImhvc3QiOiIiLCJpZCI6ImMyMTgxMTg0LWU0ODctNGIzNy1hMDI5LWY2MWQ5MDUyMzk1MCIsIm5ldCI6InRjcCIsInBhdGgiOiIvIiwicG9ydCI6IjU2NjQ3IiwicHMiOiJTRy3kuozniLflhY3otLnnv7vlopnnvZEgaHR0cHM6Ly81NDE0Lm1sIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9</span><br><span class="line">vmess://eyJhZGQiOiIxLjAuMC4xIiwiYWlkIjoiMiIsImhvc3QiOiJ3LmJhaWR1MmIubWwiLCJpZCI6ImMyZmYyOTdlLTAzZWEtNGQ0My1hZjMyLTc5NTNhNGZiYjYzYyIsIm5ldCI6IndzIiwicGF0aCI6Ii8xZGE0MWQ3LyIsInBvcnQiOiI0NDMiLCJwcyI6IvCfh6bwn4e6IEFVXzIzNCIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ==</span><br><span class="line">vmess://eyJhZGQiOiIxLjAuMC4xIiwiYWlkIjoiMiIsImhvc3QiOiJ3LmJhaWR1MmIubWwiLCJpZCI6ImMyZmYyOTdlLTAzZWEtNGQ0My1hZjMyLTc5NTNhNGZiYjYzYyIsIm5ldCI6IndzIiwicGF0aCI6Ii8xZGE0MWQ3LyIsInBvcnQiOiI0NDMiLCJwcyI6IvCfh6bwn4e6IEFVXzIzOCB8NTkuODhNYiIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ==</span><br><span class="line">vmess://eyJhZGQiOiIxLjEuMS4xMDAiLCJhaWQiOiIyIiwiaG9zdCI6InZpci5sYW9iYW42NjYueHl6IiwiaWQiOiI0ZjY3MmFiNi0yNWUzLTQ5ZTgtOTUxYS1kODdiMWZhNzU0NjciLCJuZXQiOiJ3cyIsInBhdGgiOiIvY2UwNC8iLCJwb3J0IjoiNDQzIiwicHMiOiLwn4em8J+HuiBBVV8yNzIgfDY0LjU5TWIiLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=</span><br><span class="line">vmess://eyJhZGQiOiIxLjAuMC4xIiwiYWlkIjoiMiIsImhvc3QiOiJ3LmJhaWR1MmIubWwiLCJpZCI6ImMyZmYyOTdlLTAzZWEtNGQ0My1hZjMyLTc5NTNhNGZiYjYzYyIsIm5ldCI6IndzIiwicGF0aCI6Ii8xZGE0MWQ3LyIsInBvcnQiOiI0NDMiLCJwcyI6IvCfh6bwn4e6IEFVXzI4MCB8MTM3LjQwTWIiLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=</span><br><span class="line">vmess://eyJhZGQiOiJ2Mi0wNC5zc3JzdWIub25lIiwiYWlkIjoiMzIiLCJob3N0IjoiIiwiaWQiOiIyOGFkYmVhOC03YzBkLTQwNzQtODE1Zi0xMGRlNjU3NGZiMmEiLCJuZXQiOiJ3cyIsInBhdGgiOiIvIiwicG9ydCI6IjQ0MyIsInBzIjoi8J+HqPCfh6YgQ0FfNTE5IHwgMi4wNk1iIiwidGxzIjoidGxzIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9</span><br><span class="line">vmess://eyJhZGQiOiIxMjAuMjMyLjQzLjE5NSIsImFpZCI6IjIiLCJob3N0IjoiczgueXQwMDQueHl6IiwiaWQiOiI3YWM4ZjNmNy05MWQ2LTM1ODYtYmQxYi1hMDllM2Y1MzMwMzQiLCJuZXQiOiJ3cyIsInBhdGgiOiIvdjJyYXkiLCJwb3J0IjoiMTExMTYiLCJwcyI6IvCfh6jwn4ezIENOXzQ0MSIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ==</span><br><span class="line">vmess://eyJhZGQiOiIxMjAuMjMyLjQzLjE5NSIsImFpZCI6IjIiLCJob3N0IjoiczgueXQwMDQueHl6IiwiaWQiOiI3YWM4ZjNmNy05MWQ2LTM1ODYtYmQxYi1hMDllM2Y1MzMwMzQiLCJuZXQiOiJ3cyIsInBhdGgiOiIvdjJyYXkiLCJwb3J0IjoiMTExMTYiLCJwcyI6IvCfh6jwn4ezIENOXzQ3OCB8MTEuNDBNYiIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ==</span><br><span class="line">vmess://eyJhZGQiOiIxMjAuMjMyLjQzLjE5NSIsImFpZCI6IjIiLCJob3N0IjoiczgueXQwMDQueHl6IiwiaWQiOiI3YWM4ZjNmNy05MWQ2LTM1ODYtYmQxYi1hMDllM2Y1MzMwMzQiLCJuZXQiOiJ3cyIsInBhdGgiOiIvdjJyYXkiLCJwb3J0IjoiMTExMTYiLCJwcyI6IvCfh6jwn4ezIENOXzU4NyIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ==</span><br><span class="line">vmess://eyJhZGQiOiJ1cy4xOTkzMDEueHl6IiwiYWlkIjoiMTYiLCJob3N0IjoidXMuMTk5MzAxLnh5eiIsImlkIjoiZmQwMDkyN2EtYjBjMi00NjI5LWFlZjctZDlmZjE1YTlkNzIyIiwibmV0Ijoid3MiLCJwYXRoIjoiL3dlYnNvY2tldCIsInBvcnQiOiIzMDAxMCIsInBzIjoi8J+HqPCfh7MgQ05fNTg5IHwgNC44ME1iIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9</span><br><span class="line">vmess://eyJhZGQiOiIxMjQuMjQ0LjE4Ni4xMjEiLCJhaWQiOiIyIiwiaG9zdCI6ImNlbnRvcy5mdWNoYXUueHl6IiwiaWQiOiJiNzA3YzllNi0zYTYxLTRmMGItODg0NC05YTM5OGNmYWRmYjciLCJuZXQiOiJ3cyIsInBhdGgiOiIvYWRkNzYzMTQvIiwicG9ydCI6IjQ0MyIsInBzIjoi8J+HrfCfh7AgSEtfMTQ1NyIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ==</span><br><span class="line">vmess://eyJhZGQiOiIxMzIuMTQ1LjExNS4xMjUiLCJhaWQiOiIyIiwiaG9zdCI6ImouMTk5MzAxLnh5eiIsImlkIjoiNmIzODYyN2ItYTA0NS00ZDc5LTk1YzgtZTUwNTA3M2RkMTJkIiwibmV0Ijoid3MiLCJwYXRoIjoiLzAzNjExMjUvIiwicG9ydCI6IjQ0MyIsInBzIjoi8J+Hr/Cfh7UgSlBfMTUwNyIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ==</span><br><span class="line">vmess://eyJhZGQiOiIxNzIuMTA0LjgxLjkyIiwiYWlkIjoiMiIsImhvc3QiOiIiLCJpZCI6IjU1Yjk0OWIyLTQyNDAtNDk4NS04ZDU0LWQxZjA4M2ZmNWZjNyIs</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://cdn.jsdelivr.net/gh/pzb568/blog_filescdn@1.1/wx.png" alt="彭宅波 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://cdn.jsdelivr.net/gh/pzb568/blog_filescdn@1.1/zfb.png" alt="彭宅波 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>彭宅波
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pzb568.github.io/posts/3be63484.html" title="v2ray的使用方法与节点分享">https://pzb568.github.io/posts/3be63484.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/zb_peng32777">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/pzb1688">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag"><i class="fa fa-tag"></i> 谷歌</a>
+              <a href="/tags/%E7%BF%BB%E5%A2%99/" rel="tag"><i class="fa fa-tag"></i> 翻墙</a>
+              <a href="/tags/%E8%8A%82%E7%82%B9%E5%88%86%E4%BA%AB/" rel="tag"><i class="fa fa-tag"></i> 节点分享</a>
+              <a href="/tags/v2rayNG/" rel="tag"><i class="fa fa-tag"></i> v2rayNG</a>
+              <a href="/tags/Surfboard/" rel="tag"><i class="fa fa-tag"></i> Surfboard</a>
+              <a href="/tags/Pharos/" rel="tag"><i class="fa fa-tag"></i> Pharos</a>
+              <a href="/tags/v2rayN/" rel="tag"><i class="fa fa-tag"></i> v2rayN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/65ad595e.html" rel="prev" title="在termux安装archLinux">
+                  <i class="fa fa-angle-left"></i> 在termux安装archLinux
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/96deb912.html" rel="next" title="安卓手机利用termux搭建aria2下载服务">
+                  安卓手机利用termux搭建aria2下载服务 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC80MTg0OS8xODM5NQ"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">彭宅波</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">52k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">48 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "box";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+  </script><script src="/js/third-party/comments/livere.js" defer></script>
+
+</body>
+</html>
